@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:context="http://www.springframework.org/schema/context"
+	xmlns:mvc="http://www.springframework.org/schema/mvc"
+	xsi:schemaLocation="http://www.springframework.org/schema/mvc
+	      http://www.springframework.org/schema/mvc/spring-mvc-4.0.xsd
+		  http://www.springframework.org/schema/beans 
+		  http://www.springframework.org/schema/beans/spring-beans-4.0.xsd
+		  http://www.springframework.org/schema/context 
+		  http://www.springframework.org/schema/context/spring-context-4.0.xsd"
+	default-lazy-init="false">
+	<!-- 处理spring mvc 3.2下JSON 报406错误 -->
+	<bean class="org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerAdapter">
+        <property name="messageConverters">
+              <list>
+                  <bean class="org.springframework.http.converter.json.MappingJackson2HttpMessageConverter"/>
+                            <!-- 返回Spring 乱码 主要是默认的 String Converter 编码是 ISO-8859-1 (按需要修改这里面的配置)-->
+                  <bean class="org.springframework.http.converter.StringHttpMessageConverter">
+                        <property name="supportedMediaTypes">
+                            <list>
+                                <value>text/plain;charset=UTF-8</value>
+                            </list>
+                        </property>
+                        <property name="writeAcceptCharset" value="true"/>
+                    </bean>
+              </list>
+        </property>
+    </bean>
+     
+    <mvc:annotation-driven/>
+	<!-- 扫描指定的包中的类上的注解 -->
+	<context:component-scan base-package="com.southwind" />
+	<!-- no resource view resolver, api service do not need it -->
+
+	<!-- be careful!!!! DO NOT mapping resources , DO NOT mapping default-mvc-controller!!!!we 
+		handle it by ourselves -->
+
+	<mvc:annotation-driven>
+		<!-- handle chinese charset problem 处理中文字符集的问题! -->
+		<mvc:message-converters>
+			<bean class="org.springframework.http.converter.StringHttpMessageConverter">
+				<constructor-arg index="0" value="utf-8" />
+				<property name="writeAcceptCharset" value="false" />
+			</bean>
+		</mvc:message-converters>
+	</mvc:annotation-driven>
+</beans>
