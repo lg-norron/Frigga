@@ -14,8 +14,8 @@
 		
 		<!-- 数据库连接配置 -->
 		<jdbcConnection driverClass="com.mysql.jdbc.Driver"
-			connectionURL="jdbc:mysql://localhost:3306/news" userId="news"
-			password="news">
+			connectionURL="jdbc:mysql://localhost:3306/frigga" userId="frigga"
+			password="frigga">
 		</jdbcConnection>
 
 		<!-- model的配置  -->
@@ -38,7 +38,10 @@
 		</javaClientGenerator>
 		
 		<!-- 添加要生成的表 -->
-		<table tableName="news" domainObjectName="News"></table>
-		<table tableName="newspulllog" domainObjectName="Newspulllog"></table>
+		<table tableName="ad_info" domainObjectName="AdInfo"></table>
+		<table tableName="ad_spread" domainObjectName="AdSpread"></table>
+		<table tableName="ad_spread_day" domainObjectName="AdSpreadDay"></table>
+		<table tableName="channel_user" domainObjectName="ChannelUser"></table>
+		<table tableName="revenue" domainObjectName="Revenue"></table>
 	</context>
 </generatorConfiguration>
