@@ -27,5 +27,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 @RequestMapping("/adinfo")
 public class AdInfoController {
 
-	
+	@RequestMapping("/list")
+	public String adinfoList(){
+		return "/demo.jsp";
+	}
 }

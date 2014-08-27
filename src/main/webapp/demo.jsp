@@ -1,23 +1,13 @@
-<%@ page contentType="text/html; charset=utf-8" language="java"
-	import="java.sql.*" errorPage=""%>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+	pageEncoding="UTF-8"%>
+<%@ include file="/common/taglibs.jsp" %>
 <!DOCTYPE html>
 <html class="no-js">
 
 <head>
 <title>Admin Home Page</title>
-<!-- Bootstrap -->
-<link href="bootstrap/css/bootstrap.min.css" rel="stylesheet"
-	media="screen">
-<link href="bootstrap/css/bootstrap-responsive.min.css" rel="stylesheet"
-	media="screen">
-<link href="vendors/easypiechart/jquery.easy-pie-chart.css"
-	rel="stylesheet" media="screen">
-<link href="assets/styles.css" rel="stylesheet" media="screen">
-<!-- HTML5 shim, for IE6-8 support of HTML5 elements -->
-<!--[if lt IE 9]>
-            <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
-        <![endif]-->
-<script src="vendors/modernizr-2.6.2-respond-1.1.0.min.js"></script>
+<%@ include file="/common/jslibs.jsp" %>
+
 </head>
 
 <body>
@@ -35,7 +25,7 @@
 					<div class="block">
 						<div class="navbar navbar-inner block-header">
 							<div class="muted pull-left">Bootstrap dataTables with
-								Toolbar</div>
+								Toolbar<c:out value="${ctx} "/>  </div>
 						</div>
 						<div class="block-content collapse in">
 							<div class="span12">
@@ -481,19 +471,7 @@
 		<jsp:include page="inc/bottom.jsp"></jsp:include>
 	</div>
 	<!--/.fluid-container-->
-	<script src="vendors/jquery-1.9.1.min.js"></script>
-	<script src="bootstrap/js/bootstrap.min.js"></script>
-	<script src="vendors/datatables/js/jquery.dataTables.min.js"></script>
-	<script src="vendors/easypiechart/jquery.easy-pie-chart.js"></script>
 	
-	<script src="assets/scripts.js"></script>
-	<script src="assets/DT_bootstrap.js"></script>
-	<script>
-        $(function() {
-            // Easy pie charts
-            $('.chart').easyPieChart({animate: 1000});
-        });
-        </script>
 </body>
 
 </html>
