@@ -9,45 +9,34 @@
 		  http://www.springframework.org/schema/context 
 		  http://www.springframework.org/schema/context/spring-context-4.0.xsd"
 	default-lazy-init="false">
+
+	<!-- 把标记了@Controller注解的类转换为bean -->
 	<!-- 处理spring mvc 3.2下JSON 报406错误 -->
-	<bean class="org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerAdapter">
-        <property name="messageConverters">
-              <list>
-                  <bean class="org.springframework.http.converter.json.MappingJackson2HttpMessageConverter"/>
-                            <!-- 返回Spring 乱码 主要是默认的 String Converter 编码是 ISO-8859-1 (按需要修改这里面的配置)-->
-                  <bean class="org.springframework.http.converter.StringHttpMessageConverter">
-                        <property name="supportedMediaTypes">
-                            <list>
-                                <value>text/plain;charset=UTF-8</value>
-                            </list>
-                        </property>
-                        <property name="writeAcceptCharset" value="true"/>
-                    </bean>
-              </list>
-        </property>
-    </bean>
-     
-    <mvc:annotation-driven/>
-	<!-- 扫描指定的包中的类上的注解 -->
-	<context:component-scan base-package="com.southwind" />
-	<!-- no resource view resolver, api service do not need it -->
+	<mvc:annotation-driven content-negotiation-manager="contentNegotiationManager" /> 
+	<bean id="contentNegotiationManager" class="org.springframework.web.accept.ContentNegotiationManagerFactoryBean"> 
+		<property name="favorPathExtension" value="false" />
+		<property name="favorParameter" value="false" /> 
+		<property name="ignoreAcceptHeader" value="false" /> 
+		<property name="mediaTypes" > 
+			<value>
+				atom=application/atom+xml
+			 	html=text/html
+				json=application/json
+				*=*/*
+			</value> 
+		</property>
+	</bean>
+	<context:component-scan base-package="com"
+		use-default-filters="false">
+		<context:include-filter expression="org.springframework.stereotype.Controller"
+			type="annotation" />
+	</context:component-scan>
 
-	<!-- be careful!!!! DO NOT mapping resources , DO NOT mapping default-mvc-controller!!!!we 
-		handle it by ourselves -->
-
-	<mvc:annotation-driven>
-		<!-- handle chinese charset problem 处理中文字符集的问题! -->
-		<mvc:message-converters>
-			<bean class="org.springframework.http.converter.StringHttpMessageConverter">
-				<constructor-arg index="0" value="utf-8" />
-				<property name="writeAcceptCharset" value="false" />
-			</bean>
-		</mvc:message-converters>
-	</mvc:annotation-driven>
 	<!--配置视图 -->
-<!-- 	<bean id="viewResolver" -->
-<!-- 		class="org.springframework.web.servlet.view.InternalResourceViewResolver"> -->
-		<!-- <property name="prefix" value="/WEB-INF/pages" /> -->
-		<!-- <property name="suffix" value=".jsp" /> -->
-<!-- 	</bean> -->
+	<bean id="viewResolver"
+		class="org.springframework.web.servlet.view.InternalResourceViewResolver">
+		<property name="viewClass" value="org.springframework.web.servlet.view.JstlView" />
+		<property name="prefix" value="/" />
+		<property name="suffix" value=".jsp" />
+	</bean>
 </beans>

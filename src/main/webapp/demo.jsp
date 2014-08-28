@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ include file="/common/taglibs.jsp" %>
+<c:set var="ctx" value="${pageContext.request.contextPath}" />
 <!DOCTYPE html>
 <html class="no-js">
 
@@ -25,7 +26,7 @@
 					<div class="block">
 						<div class="navbar navbar-inner block-header">
 							<div class="muted pull-left">Bootstrap dataTables with
-								Toolbar<c:out value="${ctx} "/>  </div>
+								Toolbar<c:out value="${ctx} "/> ${request.contextPath} <%String t = request.getContextPath();out.print(t); %></div>
 						</div>
 						<div class="block-content collapse in">
 							<div class="span12">

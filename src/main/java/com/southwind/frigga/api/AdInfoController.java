@@ -29,6 +29,6 @@ public class AdInfoController {
 
 	@RequestMapping("/list")
 	public String adinfoList(){
-		return "/demo.jsp";
+		return "demo";
 	}
 }
