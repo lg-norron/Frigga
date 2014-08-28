@@ -1,4 +1,5 @@
-<%@ page contentType="text/html; charset=utf-8" language="java" import="java.sql.*" errorPage="" %>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+	pageEncoding="UTF-8"%>
 <!doctype html>
 <html>
 <head>
@@ -13,7 +14,7 @@
                             <a href="index.jsp"><i class="icon-chevron-right"></i> Dashboard</a>
                         </li>
                         <li>
-                            <a href="/frigga/adinfo/list.do"><i class="icon-chevron-right"></i>广告列表</a>
+                            <a href="/frigga/adinfo/list.jsp"><i class="icon-chevron-right"></i>广告列表</a>
                         </li>
                         <li>
                             <a href="stats.html"><i class="icon-chevron-right"></i> Statistics (Charts)</a>
