@@ -9,12 +9,16 @@
  
 package com.southwind.frigga.biz.service;
 
+import java.util.List;
+
 import javax.annotation.Resource;
 
 import org.springframework.stereotype.Service;
 
 import com.southwind.frigga.dal.mybatis.mapper.AdInfoMapper;
 import com.southwind.frigga.dal.mybatis.model.AdInfo;
+import com.southwind.frigga.dal.mybatis.model.AdInfoExample;
+import com.southwind.frigga.json.model.SearchParam;
 
 
  /**
@@ -38,10 +42,34 @@ public class AdInfoService {
 	}
 	
 	public void adInfoUpdate(AdInfo adInfo){
-		adInfoMapper.updateByPrimaryKey(adInfo);
+		adInfoMapper.updateByPrimaryKeySelective(adInfo);
 	}
 	
 	public void adInfoDelete(Long id){
 		adInfoMapper.deleteByPrimaryKey(id);
+	}
+
+	
+	/**
+	 * @param searchParam
+	 * @return 
+	 * @exception 
+	 * @since  1.0.0
+	 */
+	
+	public List<AdInfo> adInfoList(SearchParam searchParam) {
+		
+		int start = searchParam.getStart();
+		int length = searchParam.getLength();
+		AdInfoExample example = new AdInfoExample();
+		example.setOrderByClause("id");
+		List<AdInfo> list = adInfoMapper.selectByExample(example,start,length);
+
+		return list;
+	}
+	
+	public AdInfo getById(long id){
+		AdInfo adInfo = adInfoMapper.selectByPrimaryKey(id);
+		return adInfo;
 	}
 }
