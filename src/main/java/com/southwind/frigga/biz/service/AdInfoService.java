@@ -49,14 +49,6 @@ public class AdInfoService {
 		adInfoMapper.deleteByPrimaryKey(id);
 	}
 
-	
-	/**
-	 * @param searchParam
-	 * @return 
-	 * @exception 
-	 * @since  1.0.0
-	 */
-	
 	public List<AdInfo> adInfoList(SearchParam searchParam) {
 		
 		int start = searchParam.getStart();

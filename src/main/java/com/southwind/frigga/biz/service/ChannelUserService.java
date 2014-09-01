@@ -9,12 +9,16 @@
  
 package com.southwind.frigga.biz.service;
 
+import java.util.List;
+
 import javax.annotation.Resource;
 
 import org.springframework.stereotype.Service;
 
 import com.southwind.frigga.dal.mybatis.mapper.ChannelUserMapper;
 import com.southwind.frigga.dal.mybatis.model.ChannelUser;
+import com.southwind.frigga.dal.mybatis.model.ChannelUserExample;
+import com.southwind.frigga.json.model.SearchParam;
 
 
  /**
@@ -43,5 +47,21 @@ public class ChannelUserService {
 	
 	public void ChannelUserDelete(Long id){
 		channelUserMapper.deleteByPrimaryKey(id);
+	}
+	
+	public List<ChannelUser> channelUserList(SearchParam searchParam) {
+		
+		int start = searchParam.getStart();
+		int length = searchParam.getLength();
+		ChannelUserExample example = new ChannelUserExample();
+		example.setOrderByClause("id");
+		List<ChannelUser> list = channelUserMapper.selectByExample(example,start,length);
+
+		return list;
+	}
+	
+	public ChannelUser getById(long id){
+		ChannelUser channelUser = channelUserMapper.selectByPrimaryKey(id);
+		return channelUser;
 	}
 }
