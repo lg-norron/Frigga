@@ -7,7 +7,7 @@
  * 
  */
  
-package com.southwind.frigga.api;
+package com.southwind.frigga.api.controller;
 
 import java.util.List;
 
@@ -18,7 +18,6 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
-import com.southwind.common.DateUtil;
 import com.southwind.frigga.biz.service.ChannelUserService;
 import com.southwind.frigga.dal.mybatis.model.ChannelUser;
 import com.southwind.frigga.json.model.InfoList;
@@ -39,6 +38,12 @@ import com.southwind.frigga.json.model.SearchParam;
 @RequestMapping("/channeluser")
 public class ChannelUserController {
 	
+	//private static final Logger logger = LoggerFactory.getLogger(ChannelUserController.class);
+	
+	private String pageList = "channeluser/list";
+	//private String pageAdd = "channeluser/add";
+	private String pageUpdate = "channeluser/update";
+	
 	@Resource
 	private ChannelUserService channelUserService;
 
@@ -55,7 +60,7 @@ public class ChannelUserController {
 	@RequestMapping(value="/add")
 	public String ChannelUserAdd(ChannelUser channelUser){
 		channelUserService.ChannelUserAdd(channelUser);
-		return "channeluser/list";
+		return pageList;
 	}
 	
 	@RequestMapping(value="/updateUI")
@@ -64,7 +69,7 @@ public class ChannelUserController {
 		ChannelUser channelUser = channelUserService.getById(id);
 		
 		ModelAndView mav = new ModelAndView();
-		mav.setViewName("channeluser/update");
+		mav.setViewName(pageUpdate);
 		mav.addObject(channelUser);
 		
 		return mav;
@@ -73,13 +78,13 @@ public class ChannelUserController {
 	@RequestMapping(value="/update")
 	public String update(ChannelUser channelUser){
 		channelUserService.ChannelUserUpdate(channelUser);
-		return "channeluser/list";
+		return pageList;
 	}
 	
 	
 	@RequestMapping(value="/delete")
 	public String update(long id){
 		channelUserService.ChannelUserDelete(id);
-		return "channeluser/list";
+		return pageList;
 	}
 }

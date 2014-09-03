@@ -44,37 +44,40 @@
 					</div>
 					<!-- /.box-header -->
 					<!-- form start -->
-					<form role="form" action="${ctx}/adinfo/add.do">
+					<form role="form" action="${ctx}/adspread/add.do" method="post" enctype="multipart/form-data">
 						<div class="box-body">
 							<div class="form-group">
-								<label for="qdLogin">渠道登录名</label> <input type="text"
-									class="form-control" id="qdLogin" name="qdLogin"
-									placeholder="请输入渠道登录名" required >
+								<label for="qdLogin">包名</label> <input type="text"
+									class="form-control" id="packageName" name="packageName"
+									placeholder="请输入包名" required>
 							</div>
 							<div class="form-group">
-								<label for="qdName">渠道名称</label> <input type="text"
-									class="form-control" id="qdName" name="qdName"
-									placeholder="请输入渠道名称" required>
+								<label>广告ID</label> <select class="form-control" id="adId" name="adId">
+									<c:forEach items="${adInfoList}" var="adInfo">
+									<option value="${adInfo.id}">${adInfo.adName}</option>
+									</c:forEach>
+								</select>
 							</div>
 							<div class="form-group">
-								<label for="spreadPrice">推广单价</label> <input type="number"
-									class="form-control" id="spreadPrice" name="spreadPrice"
-									placeholder="请输入推广单价" required>
+								<label>渠道ID</label> <select class="form-control" id="qdId" name="qdId">
+									<c:forEach items="${channelUserList}" var="channelUser">
+									<option value="${channelUser.id}">${channelUser.qdName}</option>
+									</c:forEach>
+								</select>
 							</div>
 							<div class="form-group">
-								<label for="bankName">开户行</label> <input type="number"
-									class="form-control" id="bankName" name="bankName"
-									placeholder="请输入开户行" required>
+								<label for="bankName">折扣比例(X%)</label> <input type="number"
+									class="form-control" id="rebateProp" name="rebateProp" value="80"
+									required>
 							</div>
 							<div class="form-group">
-								<label for="bankAccount">银行账号</label> <input type="number"
-									class="form-control" id="bankAccount" name="bankAccount"
-									placeholder="请输入银行账号" required>
+								<label for="bankAccount">折扣起量</label> <input type="number"
+									class="form-control" id="rebateSince" name="rebateSince"
+									value="100" required>
 							</div>
 							<div class="form-group">
-								<label for="bankUser">开户名</label> <input type="number"
-									class="form-control" id="bankUser" name="bankUser"
-									placeholder="请输入开户名" required>
+								<label for="exampleInputFile">File input</label> <input
+									type="file" id="filename" name="filename">
 							</div>
 						</div>
 						<!-- /.box-body -->

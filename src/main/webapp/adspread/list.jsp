@@ -87,7 +87,7 @@
 						<div class="box">
 							<div class="box-header">
 								<div>
-									<a href="${ctx}/adspread/add.jsp"><button
+									<a href="${ctx}/adspread/addUI.do"><button
 											class="btn btn-success btn-lg"
 											style="margin-top: 10px;margin-left: 10px">添加</button></a>
 								</div>

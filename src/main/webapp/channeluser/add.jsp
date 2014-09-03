@@ -44,7 +44,7 @@
 					</div>
 					<!-- /.box-header -->
 					<!-- form start -->
-					<form role="form" action="${ctx}/adinfo/add.do">
+					<form role="form" action="${ctx}/channeluser/add.do">
 						<div class="box-body">
 							<div class="form-group">
 								<label for="qdLogin">渠道登录名</label> <input type="text"
@@ -57,12 +57,12 @@
 									placeholder="请输入渠道名称" required>
 							</div>
 							<div class="form-group">
-								<label for="spreadPrice">推广单价</label> <input type="number"
+								<label for="spreadPrice">推广单价</label> <input type="text"
 									class="form-control" id="spreadPrice" name="spreadPrice"
 									placeholder="请输入推广单价" required>
 							</div>
 							<div class="form-group">
-								<label for="bankName">开户行</label> <input type="number"
+								<label for="bankName">开户行</label> <input type="text"
 									class="form-control" id="bankName" name="bankName"
 									placeholder="请输入开户行" required>
 							</div>
@@ -72,7 +72,7 @@
 									placeholder="请输入银行账号" required>
 							</div>
 							<div class="form-group">
-								<label for="bankUser">开户名</label> <input type="number"
+								<label for="bankUser">开户名</label> <input type="text"
 									class="form-control" id="bankUser" name="bankUser"
 									placeholder="请输入开户名" required>
 							</div>

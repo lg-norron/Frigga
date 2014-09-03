@@ -49,6 +49,9 @@
 				<li><a href="${ctx}/channeluser/list.jsp"> <i
 						class="fa fa-bar-chart-o"></i> <span>渠道信息</span>
 				</a></li>
+				<li><a href="${ctx}/adspread/list.jsp"> <i
+						class="fa fa-bar-chart-o"></i> <span>推广包信息</span>
+				</a></li>
 				<li class="treeview"><a href="#"> <i class="fa fa-laptop"></i>
 						<span>UI Elements</span> <i class="fa fa-angle-left pull-right"></i>
 				</a>

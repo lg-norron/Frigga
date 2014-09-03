@@ -7,7 +7,7 @@
  * 
  */
  
-package com.southwind.frigga.api;
+package com.southwind.frigga.api.controller;
 
 import java.util.List;
 
@@ -38,16 +38,19 @@ import com.southwind.frigga.json.model.SearchParam;
 @Controller
 @RequestMapping("/adinfo")
 public class AdInfoController {
+	//private static final Logger logger = LoggerFactory.getLogger(AdInfoController.class);
+	
+	private String pageList = "adinfo/list";
+	//private String pageAdd = "adinfo/add";
+	private String pageUpdate = "adinfo/update";
 	
 	@Resource
 	private AdInfoService adInfoService;
 
 	@RequestMapping(value="/list")
 	public  @ResponseBody InfoList<AdInfo> adinfoList(SearchParam searchParam){
-
 		InfoList<AdInfo> list = new InfoList<AdInfo>();
 		List<AdInfo> adinfoList = adInfoService.adInfoList(searchParam);
-
 		list.setData(adinfoList);
 		return list;
 	}
@@ -55,7 +58,7 @@ public class AdInfoController {
 	@RequestMapping(value="/add")
 	public String adinfoAdd(AdInfo adInfo){
 		adInfoService.adInfoAdd(adInfo);
-		return "adinfo/list";
+		return pageList;
 	}
 	
 	@RequestMapping(value="/updateUI")
@@ -64,7 +67,7 @@ public class AdInfoController {
 		AdInfo adinfo = adInfoService.getById(id);
 		
 		ModelAndView mav = new ModelAndView();
-		mav.setViewName("adinfo/update");
+		mav.setViewName(pageUpdate);
 		mav.addObject(adinfo);
 		
 		return mav;
@@ -73,7 +76,7 @@ public class AdInfoController {
 	@RequestMapping(value="/update")
 	public String update(AdInfo adinfo){
 		adInfoService.adInfoUpdate(adinfo);
-		return "adinfo/list";
+		return pageList;
 	}
 	
 	@RequestMapping(value="/shelves")
@@ -82,7 +85,7 @@ public class AdInfoController {
 		adinfo.setId(id);
 		adinfo.setShelvesTime(DateUtil.getCurrentDate("yyyy-MM-dd HH:mm:ss"));
 		adInfoService.adInfoUpdate(adinfo);
-		return "adinfo/list";
+		return pageList;
 	}
 	
 	@RequestMapping(value="/offShelves")
@@ -91,12 +94,12 @@ public class AdInfoController {
 		adinfo.setId(id);
 		adinfo.setOffShelvesTime(DateUtil.getCurrentDate("yyyy-MM-dd HH:mm:ss"));
 		adInfoService.adInfoUpdate(adinfo);
-		return "adinfo/list";
+		return pageList;
 	}
 	
 	@RequestMapping(value="/delete")
 	public String update(long id){
 		adInfoService.adInfoDelete(id);
-		return "adinfo/list";
+		return pageList;
 	}
 }
