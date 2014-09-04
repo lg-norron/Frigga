@@ -33,10 +33,12 @@
 											}, {
 												"data" : "rebateSince"
 											}, {
+												"data" : "rebateSinceFlag"
+											},{
 												"data" : "downloadUrl"
 											} ],
 											"columnDefs" : [ {
-												"targets" : [ 7 ], // 目标列位置，下标从0开始
+												"targets" : [ 8 ], // 目标列位置，下标从0开始
 												"data" : "id", // 数据列名
 												"render" : function(data, type,
 														full) {

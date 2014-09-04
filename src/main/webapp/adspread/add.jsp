@@ -77,7 +77,7 @@
 							</div>
 							<div class="form-group">
 								<label for="exampleInputFile">File input</label> <input
-									type="file" id="filename" name="filename">
+									type="file" id="uploadfile" name="uploadfile">
 							</div>
 						</div>
 						<!-- /.box-body -->
