@@ -44,38 +44,36 @@
 					</div>
 					<!-- /.box-header -->
 					<!-- form start -->
-					<form role="form" action="${ctx}/channelUser/update.do">
-					<input type="hidden" name="id" value="${channelUser.id}">
+					<form role="form" action="${ctx}/adspread/add.do" method="post" enctype="multipart/form-data">
 						<div class="box-body">
 							<div class="form-group">
-								<label for="qdLogin">渠道登录名</label> <input type="text"
-									class="form-control" id="qdLogin" name="qdLogin"
-									value="${channelUser.qdLogin} required >
+								<label for="qdLogin">包名</label> <input type="text"
+									class="form-control" id="packageName" name="packageName"
+									value="${adSpread.packageName}" required>
 							</div>
 							<div class="form-group">
-								<label for="qdName">渠道名称</label> <input type="text"
-									class="form-control" id="qdName" name="qdName"
-									value="${channelUser.qdName} required>
+								<label>广告ID</label> <select class="form-control" id="adId" name="adId">
+									<c:forEach items="${adInfoList}" var="adInfo">
+									<option value="${adInfo.id}" <c:if test="${adSpread.adId==adInfo.id}"> selected="selected"</c:if> >${adInfo.adName}</option>
+									</c:forEach>
+								</select>
 							</div>
 							<div class="form-group">
-								<label for="spreadPrice">推广单价</label> <input type="number"
-									class="form-control" id="spreadPrice" name="spreadPrice"
-									value="${channelUser.spreadPrice} required>
+								<label>渠道ID</label> <select class="form-control" id="qdId" name="qdId">
+									<c:forEach items="${channelUserList}" var="channelUser">
+									<option value="${channelUser.id}" <c:if test="${adSpread.qdId==channelUser.id}"> selected="selected"</c:if> >${channelUser.qdName}</option>
+									</c:forEach>
+								</select>
 							</div>
 							<div class="form-group">
-								<label for="bankName">开户行</label> <input type="number"
-									class="form-control" id="bankName" name="bankName"
-									value="${channelUser.bankName} required>
+								<label for="rebateProp">折扣比例(X%)</label> <input type="number"
+									class="form-control" id="rebateProp" name="rebateProp" value="${adSpread.rebateProp}"
+									required>
 							</div>
 							<div class="form-group">
-								<label for="bankAccount">银行账号</label> <input type="number"
-									class="form-control" id="bankAccount" name="bankAccount"
-									value="${channelUser.bankAccount} required>
-							</div>
-							<div class="form-group">
-								<label for="bankUser">开户名</label> <input type="number"
-									class="form-control" id="bankUser" name="bankUser"
-									value="${channelUser.bankUser} required>
+								<label for="rebateSince">折扣起量</label> <input type="number"
+									class="form-control" id="rebateSince" name="rebateSince"
+									value="${adSpread.rebateSince}" required>
 							</div>
 						</div>
 						<!-- /.box-body -->

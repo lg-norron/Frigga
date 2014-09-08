@@ -10,7 +10,6 @@ package com.southwind.frigga.api.controller;
 
 import java.io.File;
 import java.io.FileOutputStream;
-import java.io.IOException;
 import java.util.List;
 
 import javax.annotation.Resource;
@@ -67,7 +66,7 @@ public class AdSpreadController {
 
 	@RequestMapping(value = "/list")
 	public @ResponseBody
-	InfoList<AdSpread> AdSpreadList(SearchParam searchParam) {
+	InfoList<AdSpread> adSpreadList(SearchParam searchParam) {
 
 		InfoList<AdSpread> list = new InfoList<AdSpread>();
 		List<AdSpread> AdSpreadList = adSpreadService.adSpreadList(searchParam);

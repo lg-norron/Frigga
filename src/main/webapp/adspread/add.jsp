@@ -47,7 +47,7 @@
 					<form role="form" action="${ctx}/adspread/add.do" method="post" enctype="multipart/form-data">
 						<div class="box-body">
 							<div class="form-group">
-								<label for="qdLogin">包名</label> <input type="text"
+								<label for="packageName">包名</label> <input type="text"
 									class="form-control" id="packageName" name="packageName"
 									placeholder="请输入包名" required>
 							</div>
@@ -66,17 +66,17 @@
 								</select>
 							</div>
 							<div class="form-group">
-								<label for="bankName">折扣比例(X%)</label> <input type="number"
+								<label for="rebateProp">折扣比例(X%)</label> <input type="number"
 									class="form-control" id="rebateProp" name="rebateProp" value="80"
 									required>
 							</div>
 							<div class="form-group">
-								<label for="bankAccount">折扣起量</label> <input type="number"
+								<label for="rebateSince">折扣起量</label> <input type="number"
 									class="form-control" id="rebateSince" name="rebateSince"
 									value="100" required>
 							</div>
 							<div class="form-group">
-								<label for="exampleInputFile">File input</label> <input
+								<label for="uploadfile">File input</label> <input
 									type="file" id="uploadfile" name="uploadfile">
 							</div>
 						</div>
