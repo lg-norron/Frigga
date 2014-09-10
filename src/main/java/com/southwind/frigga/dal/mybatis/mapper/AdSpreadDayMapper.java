@@ -108,4 +108,13 @@ public interface AdSpreadDayMapper {
 	 */
 	
 	AdSpreadDay getDataForDay(@Param("spreadId") long spreadId, @Param("spreadDate") String spreadDate);
+
+	
+	/**
+	 * @param spreadId
+	 * @return 
+	 * @exception 
+	 * @since  1.0.0
+	 */
+	Integer selectSumBySpreadId(long spreadId);
 }
