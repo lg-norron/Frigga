@@ -32,9 +32,6 @@
 				<li><a href="${ctx}/adspread/list.jsp"> <i
 						class="fa fa-table"></i> <span>推广包信息</span>
 				</a></li>
-				<li><a href="${ctx}/adspreadday/list.jsp"> <i
-						class="fa fa-bar-chart-o"></i> <span>推广包报表</span>
-				</a></li>
 				
 			</ul>
 		</section>

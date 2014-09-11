@@ -46,7 +46,9 @@
 													var edit = "<a href='${ctx}/adspread/updateUI.do?id="+ data + "'>"+"<button class='btn btn-warning'>编辑</button>"+"</a>&nbsp;";
 													var del = " <a href='${ctx}/adspread/delete.do?id="+ data+ "'>"+"<button class='btn btn-danger'>删除</button>"+"</a>&nbsp;";
 													var record = " <a href='${ctx}/adspreadday/recordUI.do?spreadId="+ data+ "'>"+"<button class='btn btn-danger'>录入数据</button>"+"</a>&nbsp;";
-													var str = edit + del +record;
+													var veiwlist = " <a href='${ctx}/adspreadday/list.jsp?spreadId="+ data+ "'>"+"<button class='btn btn-info'>查看推广列表</button>"+"</a>&nbsp;";
+													
+													var str = edit + del +veiwlist;
 													return str;
 												}
 											},

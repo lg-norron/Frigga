@@ -18,7 +18,7 @@
 											"processing" : true,
 											"serverSide" : true,
 											"ajax" : {
-												"url" : "${ctx}/adspreadday/list.do",
+												"url" : "${ctx}/adspreadday/list.do?spreadId=${spreadId}",
 											},
 											"columns" : [ {
 												"data" : "spreadDate"
@@ -29,9 +29,9 @@
 											}, {
 												"data" : "packageName"
 											}, {
-												"data" : "rebateProp"
+												"data" : "activeRevenue"
 											}, {
-												"data" : "rebateSince"
+												"data" : "activeExpenses"
 											}, {
 												"data" : "rebateSinceFlag"
 											}
