@@ -37,15 +37,17 @@ public class ChannelUserService {
 	@Resource
 	private ChannelUserMapper channelUserMapper;
 	
-	public void ChannelUserAdd(ChannelUser channelUser){
-		channelUserMapper.insert(channelUser);
+	public void channelUserAdd(ChannelUser channelUser){
+		String qdLogin = channelUser.getQdLogin();
+		channelUser.setQdPassword(qdLogin);
+		channelUserMapper.insertSelective(channelUser);
 	}
 	
-	public void ChannelUserUpdate(ChannelUser channelUser){
-		channelUserMapper.updateByPrimaryKey(channelUser);
+	public void channelUserUpdate(ChannelUser channelUser){
+		channelUserMapper.updateByPrimaryKeySelective(channelUser);
 	}
 	
-	public void ChannelUserDelete(Long id){
+	public void channelUserDelete(Long id){
 		channelUserMapper.deleteByPrimaryKey(id);
 	}
 	

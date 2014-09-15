@@ -21,7 +21,8 @@ import com.southwind.frigga.dal.mybatis.mapper.AdSpreadMapper;
 import com.southwind.frigga.dal.mybatis.model.AdSpread;
 import com.southwind.frigga.dal.mybatis.model.AdSpreadDay;
 import com.southwind.frigga.dal.mybatis.model.AdSpreadDayExample;
-import com.southwind.frigga.json.model.SearchParam;
+import com.southwind.frigga.dal.mybatis.model.AdSpreadDayExample.Criteria;
+import com.southwind.frigga.json.model.AdSpreadDaySearchParam;
 
 
  /**
@@ -43,11 +44,11 @@ public class AdSpreadDayService {
 	private AdSpreadMapper adSpreadMapper;
 	
 	public void adSpreadDayAdd(AdSpreadDay adSpreadDay){
-		adSpreadDayMapper.insert(adSpreadDay);
+		adSpreadDayMapper.insertSelective(adSpreadDay);
 	}
 	
 	public void adSpreadUpdate(AdSpreadDay adSpreadDay){
-		adSpreadDayMapper.updateByPrimaryKey(adSpreadDay);
+		adSpreadDayMapper.updateByPrimaryKeySelective(adSpreadDay);
 	}
 	
 	public void adSpreadDelete(Long id){
@@ -62,12 +63,18 @@ public class AdSpreadDayService {
 	 * @since  1.0.0
 	 */
 	
-	public List<AdSpreadDay> adSpreadList(SearchParam searchParam) {
-		int start = searchParam.getStart();
-		int length = searchParam.getLength();
+	public List<AdSpreadDay> adSpreadList(AdSpreadDaySearchParam adSpreadDaySearchParam) {
+		int start = adSpreadDaySearchParam.getStart();
+		int length = adSpreadDaySearchParam.getLength();
+		long spreadId = adSpreadDaySearchParam.getSpreadId();
+		long qdid = adSpreadDaySearchParam.getQdId();
 		AdSpreadDayExample example = new AdSpreadDayExample();
+		Criteria criteria = example.createCriteria();
+		if(spreadId!=0){
+			criteria.andSpreadIdEqualTo(spreadId);
+		}
 		example.setOrderByClause("spread_date desc");
-		List<AdSpreadDay> adSpreadDayList = adSpreadDayMapper.selectByExample(example,start,length);
+		List<AdSpreadDay> adSpreadDayList = adSpreadDayMapper.selectByExample(example,qdid,start,length);
 		return adSpreadDayList;
 	}
 
@@ -154,5 +161,19 @@ public class AdSpreadDayService {
 			}
 		}
 		
+	}
+
+	
+	/**
+	 * @param id
+	 * @return 
+	 * @exception 
+	 * @since  1.0.0
+	 */
+	
+	public AdSpreadDay getById(Long id) {
+		// TODO Auto-generated method stub
+		AdSpreadDay adSpreadDay = adSpreadDayMapper.selectByPrimaryKey(id);
+		return adSpreadDay;
 	}
 }

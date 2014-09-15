@@ -38,11 +38,11 @@ public class AdSpreadService {
 	private AdSpreadMapper adSpreadMapper;
 	
 	public void adSpreadAdd(AdSpread adSpread){
-		adSpreadMapper.insert(adSpread);
+		adSpreadMapper.insertSelective(adSpread);
 	}
 	
 	public void adSpreadUpdate(AdSpread adSpread){
-		adSpreadMapper.updateByPrimaryKey(adSpread);
+		adSpreadMapper.updateByPrimaryKeySelective(adSpread);
 	}
 	
 	public void adSpreadDelete(Long id){

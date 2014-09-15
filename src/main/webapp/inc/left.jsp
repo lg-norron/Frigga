@@ -18,11 +18,11 @@
 					<img src="${ctx}/img/avatar3.png" class="img-circle" alt="User Image" />
 				</div>
 				<div class="pull-left info">
-					<p>Hello, Jane</p>
+					<p>当前用户：${user.username}</p>
 
-					<a href="#"><i class="fa fa-circle text-success"></i> Online</a>
 				</div>
 			</div>
+			<c:if test="${user.role == 'super' }">
 				<li><a href="${ctx}/adinfo/list.jsp"> <i
 						class="fa fa-table"></i> <span>广告主信息</span>
 				</a></li>
@@ -32,7 +32,10 @@
 				<li><a href="${ctx}/adspread/list.jsp"> <i
 						class="fa fa-table"></i> <span>推广包信息</span>
 				</a></li>
-				
+				</c:if>
+				<li><a href="${ctx}/adspreadday/list.jsp?spreadId=0"> <i
+						class="fa fa-table"></i> <span>推广统计</span>
+				</a></li>
 			</ul>
 		</section>
 		<!-- /.sidebar -->

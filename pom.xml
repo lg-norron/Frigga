@@ -48,13 +48,6 @@
 			<artifactId>standard</artifactId>
 			<version>1.1.2</version>
 		</dependency>
-		<!-- EL -->
-<!-- 		<dependency> -->
-<!-- 			<groupId>javax.el</groupId> -->
-<!-- 			<artifactId>javax.el-api</artifactId> -->
-<!-- 			<version>2.2.4</version> -->
-<!-- 			<scope>provided</scope> -->
-<!-- 		</dependency> -->
 		<!-- spring -->
 		<dependency>
 			<groupId>org.springframework</groupId>

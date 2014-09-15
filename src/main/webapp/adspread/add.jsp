@@ -76,6 +76,11 @@
 									value="100" required>
 							</div>
 							<div class="form-group">
+								<label for="spreadPrice">推广单价</label> <input type="number"
+									class="form-control" id="spreadPrice" name="spreadPrice" step="0.01"
+									placeholder="请输入推广单价" required>
+							</div>
+							<div class="form-group">
 								<label for="uploadfile">File input</label> <input
 									type="file" id="uploadfile" name="uploadfile">
 							</div>

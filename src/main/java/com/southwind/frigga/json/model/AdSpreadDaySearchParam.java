@@ -24,6 +24,7 @@ package com.southwind.frigga.json.model;
 public class AdSpreadDaySearchParam extends SearchParam {
 
 	private long spreadId;
+	private long qdId;
 
 	/**
 	 * spreadId
@@ -42,6 +43,25 @@ public class AdSpreadDaySearchParam extends SearchParam {
 	
 	public void setSpreadId(long spreadId) {
 		this.spreadId = spreadId;
+	}
+
+	/**
+	 * qdId
+	 *
+	 * @return  the qdId
+	 * @since   1.0.0
+	 */
+	
+	public long getQdId() {
+		return qdId;
+	}
+
+	/**
+	 * @param qdId the qdId to set
+	 */
+	
+	public void setQdId(long qdId) {
+		this.qdId = qdId;
 	}
 	
 	

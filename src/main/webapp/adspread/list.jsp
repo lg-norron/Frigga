@@ -34,35 +34,61 @@
 												"data" : "rebateSince"
 											}, {
 												"data" : "rebateSinceFlag"
-											},{
+											}, {
+												"data" : "spreadPrice"
+											}, {
 												"data" : "downloadUrl"
 											} ],
-											"columnDefs" : [ {
-												"targets" : [ 9 ], // 目标列位置，下标从0开始
-												"data" : "id", // 数据列名
-												"render" : function(data, type,
-														full) {
-													// 返回自定义内容
-													var edit = "<a href='${ctx}/adspread/updateUI.do?id="+ data + "'>"+"<button class='btn btn-warning'>编辑</button>"+"</a>&nbsp;";
-													var del = " <a href='${ctx}/adspread/delete.do?id="+ data+ "'>"+"<button class='btn btn-danger'>删除</button>"+"</a>&nbsp;";
-													var record = " <a href='${ctx}/adspreadday/recordUI.do?spreadId="+ data+ "'>"+"<button class='btn btn-danger'>录入数据</button>"+"</a>&nbsp;";
-													var veiwlist = " <a href='${ctx}/adspreadday/list.jsp?spreadId="+ data+ "'>"+"<button class='btn btn-info'>查看推广列表</button>"+"</a>&nbsp;";
-													
-													var str = edit + del +veiwlist;
-													return str;
-												}
-											},
-											{
-												"targets" : [ 8 ], // 目标列位置，下标从0开始
-												"data" : "downloadUrl", // 数据列名
-												"render" : function(data, type,
-														full) {
-													// 返回自定义内容
-													var download = " <a href='${ctx}"+ data+ "'>"+"<button class='btn btn-default'>下载包</button>"+"</a>&nbsp;";
-													var str = download ;
-													return str;
-												}
-											}
+											"columnDefs" : [
+													{
+														"targets" : [ 9 ], // 目标列位置，下标从0开始
+														"data" : "downloadUrl", // 数据列名
+														"render" : function(
+																data, type,
+																full) {
+															// 返回自定义内容
+															var download = " <a href='${ctx}"+ data+ "'>"
+																	+ "<button class='btn btn-default'>下载包</button>"
+																	+ "</a>&nbsp;";
+															var str = download;
+															return str;
+														}
+													},
+													{
+														"targets" : [ 10 ], // 目标列位置，下标从0开始
+														"data" : "id", // 数据列名
+														"render" : function(
+																data, type,
+																full) {
+															// 返回自定义内容
+															var edit = "<a href='${ctx}/adspread/updateUI.do?id="
+																	+ data
+																	+ "'>"
+																	+ "<button class='btn btn-warning'>编辑</button>"
+																	+ "</a>&nbsp;";
+															var del = " <a href='${ctx}/adspread/delete.do?id="
+																	+ data
+																	+ "'>"
+																	+ "<button class='btn btn-danger'>删除</button>"
+																	+ "</a>&nbsp;";
+															var record = " <a href='${ctx}/adspreadday/recordUI.do?spreadId="
+																	+ data
+																	+ "'>"
+																	+ "<button class='btn btn-danger'>录入数据</button>"
+																	+ "</a>&nbsp;";
+															var veiwlist = " <a href='${ctx}/adspreadday/list.jsp?spreadId="
+																	+ data
+																	+ "'>"
+																	+ "<button class='btn btn-info'>查看推广列表</button>"
+																	+ "</a>&nbsp;";
+
+															var str = edit
+																	+ del
+																	+ veiwlist;
+															return str;
+														}
+													}
+
 											]
 										});
 					});
@@ -120,6 +146,7 @@
 											<th>折扣比例</th>
 											<th>折扣起量</th>
 											<th>起量参考标识</th>
+											<th>推广单价</th>
 											<th>下载地址</th>
 											<th>操作</th>
 											<th>下载</th>

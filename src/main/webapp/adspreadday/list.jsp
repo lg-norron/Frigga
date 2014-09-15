@@ -18,7 +18,7 @@
 											"processing" : true,
 											"serverSide" : true,
 											"ajax" : {
-												"url" : "${ctx}/adspreadday/list.do?spreadId=${spreadId}",
+												"url" : "${ctx}/adspreadday/list.do?spreadId=${param.spreadId}",
 											},
 											"columns" : [ {
 												"data" : "spreadDate"
@@ -42,8 +42,8 @@
 												"render" : function(data, type,
 														full) {
 													// 返回自定义内容
-													var edit = "<a href='${ctx}/adspreadday/updateUI.do?id="+ data + "'>"+"<button class='btn btn-warning'>编辑</button>"+"</a>&nbsp;";
-													var del = " <a href='${ctx}/adspreadday/delete.do?id="+ data+ "'>"+"<button class='btn btn-danger'>删除</button>"+"</a>&nbsp;";													
+													var edit = "<a href='${ctx}/adspreadday/recordUI.do?id="+ data + "&spreadId=${param.spreadId}'>"+"<button class='btn btn-warning'>编辑</button>"+"</a>&nbsp;";
+													var del = " <a href='${ctx}/adspreadday/delete.do?id="+ data+ "&spreadId=${param.spreadId}'>"+"<button class='btn btn-danger'>删除</button>"+"</a>&nbsp;";													
 													var str = edit + del ;
 													return str;
 												}
@@ -66,7 +66,7 @@
 			<!-- Content Header (Page header) -->
 			<section class="content-header">
 				<h1>
-					Dashboard <small>Control panel</small>
+					${param.spreadId} <small>Control panel</small>
 				</h1>
 				<ol class="breadcrumb">
 					<li><a href="#"><i class="fa fa-dashboard"></i> Home</a></li>
@@ -87,7 +87,7 @@
 						<div class="box">
 							<div class="box-header">
 								<div>
-									<a href="${ctx}/adspread/addUI.do"><button
+									<a href="${ctx}/adspreadday/recordUI.do?spreadId=${param.spreadId}"><button
 											class="btn btn-success btn-lg"
 											style="margin-top: 10px;margin-left: 10px">添加</button></a>
 								</div>

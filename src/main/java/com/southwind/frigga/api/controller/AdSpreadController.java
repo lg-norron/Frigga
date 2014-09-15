@@ -50,7 +50,7 @@ public class AdSpreadController {
 
 	private static final Logger logger = LoggerFactory.getLogger(AdSpreadController.class);
 
-	private String pageList = "adspread/list";
+	private String pageList = "redirect:/adspread/list.jsp";
 	private String pageAdd = "adspread/add";
 	private String pageUpdate = "adspread/update";
 

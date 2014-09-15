@@ -38,7 +38,7 @@ public class AdInfoService {
 	private AdInfoMapper adInfoMapper;
 	
 	public void adInfoAdd(AdInfo adInfo){
-		adInfoMapper.insert(adInfo);
+		adInfoMapper.insertSelective(adInfo);
 	}
 	
 	public void adInfoUpdate(AdInfo adInfo){

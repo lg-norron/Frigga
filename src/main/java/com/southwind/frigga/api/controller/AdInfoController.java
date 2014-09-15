@@ -40,7 +40,7 @@ import com.southwind.frigga.json.model.SearchParam;
 public class AdInfoController {
 	//private static final Logger logger = LoggerFactory.getLogger(AdInfoController.class);
 	
-	private String pageList = "adinfo/list";
+	private String pageList = "redirect:/adinfo/list.jsp";
 	//private String pageAdd = "adinfo/add";
 	private String pageUpdate = "adinfo/update";
 	

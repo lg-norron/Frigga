@@ -27,8 +27,6 @@
 											}, {
 												"data" : "qdName"
 											}, {
-												"data" : "spreadPrice"
-											}, {
 												"data" : "bankName"
 											}, {
 												"data" : "bankAccount"
@@ -36,7 +34,7 @@
 												"data" : "bankUser"
 											} ],
 											"columnDefs" : [ {
-												"targets" : [ 7 ], // 目标列位置，下标从0开始
+												"targets" : [ 6 ], // 目标列位置，下标从0开始
 												"data" : "id", // 数据列名
 												"render" : function(data, type,
 														full) {
@@ -45,7 +43,7 @@
 													var del = " <a href='${ctx}/channeluser/delete.do?id="+ data+ "'>"+"<button class='btn btn-danger'>删除</button>"+"</a>&nbsp;";
 													var shelves = " <a href='${ctx}/channeluser/shelves.do?id="+ data+ "'>"+"<button class='btn btn-primary'>上架</button>"+"</a>&nbsp;";
 													var offShelves = " <a href='${ctx}/channeluser/offShelves.do?id="+ data+ "'>"+"<button class='btn btn-default'>下架</button>"+"</a>&nbsp;";
-													var str = edit + del + shelves + offShelves ;
+													var str = edit + del  ;
 													return str;
 												}
 											} ]
@@ -101,7 +99,6 @@
 											<th>id</th>
 											<th>渠道登录名</th>
 											<th>渠道名称</th>
-											<th>推广单价</th>
 											<th>开户行</th>
 											<th>银行账号</th>
 											<th>开户名</th>

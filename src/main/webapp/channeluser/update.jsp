@@ -44,38 +44,33 @@
 					</div>
 					<!-- /.box-header -->
 					<!-- form start -->
-					<form role="form" action="${ctx}/channelUser/update.do">
+					<form role="form" action="${ctx}/channeluser/update.do">
 					<input type="hidden" name="id" value="${channelUser.id}">
 						<div class="box-body">
 							<div class="form-group">
 								<label for="qdLogin">渠道登录名</label> <input type="text"
 									class="form-control" id="qdLogin" name="qdLogin"
-									value="${channelUser.qdLogin} required >
+									value="${channelUser.qdLogin}" required >
 							</div>
 							<div class="form-group">
 								<label for="qdName">渠道名称</label> <input type="text"
 									class="form-control" id="qdName" name="qdName"
-									value="${channelUser.qdName} required>
+									value="${channelUser.qdName}" required>
 							</div>
 							<div class="form-group">
-								<label for="spreadPrice">推广单价</label> <input type="number"
-									class="form-control" id="spreadPrice" name="spreadPrice"
-									value="${channelUser.spreadPrice} required>
-							</div>
-							<div class="form-group">
-								<label for="bankName">开户行</label> <input type="number"
+								<label for="bankName">开户行</label> <input type="text"
 									class="form-control" id="bankName" name="bankName"
-									value="${channelUser.bankName} required>
+									value="${channelUser.bankName}" required>
 							</div>
 							<div class="form-group">
 								<label for="bankAccount">银行账号</label> <input type="number"
 									class="form-control" id="bankAccount" name="bankAccount"
-									value="${channelUser.bankAccount} required>
+									value="${channelUser.bankAccount}" required>
 							</div>
 							<div class="form-group">
-								<label for="bankUser">开户名</label> <input type="number"
+								<label for="bankUser">开户名</label> <input type="text"
 									class="form-control" id="bankUser" name="bankUser"
-									value="${channelUser.bankUser} required>
+									value="${channelUser.bankUser}" required>
 							</div>
 						</div>
 						<!-- /.box-body -->

@@ -57,11 +57,6 @@
 									placeholder="请输入渠道名称" required>
 							</div>
 							<div class="form-group">
-								<label for="spreadPrice">推广单价</label> <input type="text"
-									class="form-control" id="spreadPrice" name="spreadPrice"
-									placeholder="请输入推广单价" required>
-							</div>
-							<div class="form-group">
 								<label for="bankName">开户行</label> <input type="text"
 									class="form-control" id="bankName" name="bankName"
 									placeholder="请输入开户行" required>

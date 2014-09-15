@@ -40,7 +40,7 @@ public class ChannelUserController {
 	
 	//private static final Logger logger = LoggerFactory.getLogger(ChannelUserController.class);
 	
-	private String pageList = "channeluser/list";
+	private String pageList = "redirect:/channeluser/list.jsp";
 	//private String pageAdd = "channeluser/add";
 	private String pageUpdate = "channeluser/update";
 	
@@ -48,7 +48,7 @@ public class ChannelUserController {
 	private ChannelUserService channelUserService;
 
 	@RequestMapping(value="/list")
-	public  @ResponseBody InfoList<ChannelUser> ChannelUserList(SearchParam searchParam){
+	public  @ResponseBody InfoList<ChannelUser> channelUserList(SearchParam searchParam){
 
 		InfoList<ChannelUser> list = new InfoList<ChannelUser>();
 		List<ChannelUser> channelUserList = channelUserService.channelUserList(searchParam);
@@ -58,8 +58,8 @@ public class ChannelUserController {
 	}
 	
 	@RequestMapping(value="/add")
-	public String ChannelUserAdd(ChannelUser channelUser){
-		channelUserService.ChannelUserAdd(channelUser);
+	public String channelUserAdd(ChannelUser channelUser){
+		channelUserService.channelUserAdd(channelUser);
 		return pageList;
 	}
 	
@@ -77,14 +77,14 @@ public class ChannelUserController {
 	
 	@RequestMapping(value="/update")
 	public String update(ChannelUser channelUser){
-		channelUserService.ChannelUserUpdate(channelUser);
+		channelUserService.channelUserUpdate(channelUser);
 		return pageList;
 	}
 	
 	
 	@RequestMapping(value="/delete")
 	public String update(long id){
-		channelUserService.ChannelUserDelete(id);
+		channelUserService.channelUserDelete(id);
 		return pageList;
 	}
 }

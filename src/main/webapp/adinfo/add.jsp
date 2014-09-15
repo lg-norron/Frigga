@@ -57,7 +57,7 @@
 									placeholder="请输入广告商" required>
 							</div>
 							<div class="form-group">
-								<label for="unitPrice">广告单价</label> <input type="number"
+								<label for="unitPrice">广告单价</label> <input type="number" step="0.01"
 									class="form-control" id="unitPrice" name="unitPrice"
 									placeholder="请输入广告单价" required>
 							</div>

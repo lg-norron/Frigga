@@ -75,6 +75,11 @@
 									class="form-control" id="rebateSince" name="rebateSince"
 									value="${adSpread.rebateSince}" required>
 							</div>
+							<div class="form-group">
+								<label for="spreadPrice">推广单价</label> <input type="number"
+									class="form-control" id="spreadPrice" name="spreadPrice" step="0.01"
+									value="${adSpread.spreadPrice} required>
+							</div>
 						</div>
 						<!-- /.box-body -->
 

@@ -13,44 +13,33 @@
 
 	default-lazy-init="false">
 
-	<!-- 把标记了@Controller注解的类转换为bean -->
-	<!-- 处理spring mvc 3.2下JSON 报406错误 -->
-<!-- 	<mvc:annotation-driven -->
-<!-- 		content-negotiation-manager="contentNegotiationManager" /> -->
-<!-- 	<bean id="contentNegotiationManager" -->
-<!-- 		class="org.springframework.web.accept.ContentNegotiationManagerFactoryBean"> -->
-<!-- 		<property name="favorPathExtension" value="false" /> -->
-<!-- 		<property name="favorParameter" value="false" /> -->
-<!-- 		<property name="ignoreAcceptHeader" value="false" /> -->
-<!-- 		<property name="mediaTypes"> -->
-<!-- 			<value> -->
-<!-- 				atom=application/atom+xml -->
-<!-- 				html=text/html -->
-<!-- 				json=application/json -->
-<!-- 				*=*/* -->
-<!-- 			</value> -->
-<!-- 		</property> -->
-<!-- 	</bean> -->
-<!-- 	<context:component-scan base-package="com.southwind.frigga.api" -->
-<!-- 		use-default-filters="false"> -->
-<!-- 		<context:include-filter expression="org.springframework.stereotype.Controller" -->
-<!-- 			type="annotation" /> -->
-<!-- 	</context:component-scan> -->
-<!-- 	<aop:aspectj-autoproxy proxy-target-class="false" /> -->
-<!-- 扫描指定的包中的类上的注解 -->
-    <context:component-scan base-package="com.southwind.frigga.api" />
-    <aop:aspectj-autoproxy proxy-target-class="false" />
-    <!-- no resource view resolver, api service do not need it-->
-    <!-- be careful!!!! DO NOT mapping resources , DO NOT mapping default-mvc-controller!!!!we handle it by ourselves -->
-    <mvc:annotation-driven>
-        <!-- handle chinese charset problem 处理中文字符集的问题! -->
-        <mvc:message-converters>
-            <bean class="org.springframework.http.converter.StringHttpMessageConverter">
-                <constructor-arg index="0" value="utf-8"/>
-                <property name="writeAcceptCharset" value="false"/>
-            </bean>
-        </mvc:message-converters>
-    </mvc:annotation-driven>
+
+	<!-- 扫描指定的包中的类上的注解 -->
+	<context:component-scan base-package="com.southwind.frigga.api" />
+	<aop:aspectj-autoproxy proxy-target-class="false" />
+	<!-- no resource view resolver, api service do not need it -->
+	<!-- be careful!!!! DO NOT mapping resources , DO NOT mapping default-mvc-controller!!!!we 
+		handle it by ourselves -->
+	<mvc:annotation-driven>
+		<!-- handle chinese charset problem 处理中文字符集的问题! -->
+		<mvc:message-converters>
+			<bean class="org.springframework.http.converter.StringHttpMessageConverter">
+				<constructor-arg index="0" value="utf-8" />
+				<property name="writeAcceptCharset" value="false" />
+			</bean>
+		</mvc:message-converters>
+	</mvc:annotation-driven>
+	
+	<mvc:interceptors>
+	
+	<mvc:interceptor>
+		<mvc:mapping path="/**.jsp"/>
+		<mvc:exclude-mapping path="/user/*"/>
+		<bean class="com.southwind.frigga.interceptor.UserInterceptor"/>
+	</mvc:interceptor>
+
+	</mvc:interceptors>
+	
 	<!--配置视图 -->
 	<bean id="viewResolver"
 		class="org.springframework.web.servlet.view.InternalResourceViewResolver">
@@ -64,7 +53,7 @@
 
 	<bean id="multipartResolver"
 		class="org.springframework.web.multipart.commons.CommonsMultipartResolver">
-		<property name="defaultEncoding" value="UTF-8"></property>  
+		<property name="defaultEncoding" value="UTF-8"></property>
 		<!-- set the max upload size100MB -->
 		<property name="maxUploadSize">
 			<value>800000</value>

@@ -27,7 +27,8 @@
 <!-- DATA TABLES -->
 <%-- <link href="${ctx}/css/datatables/dataTables.bootstrap.css"
 	rel="stylesheet" type="text/css" /> --%>
-	<link href="//cdn.datatables.net/1.10.2/css/jquery.dataTables.css" rel="stylesheet" type="text/css"/>
+<link href="//cdn.datatables.net/1.10.2/css/jquery.dataTables.css"
+	rel="stylesheet" type="text/css" />
 <!-- Theme style -->
 <link href="${ctx}/css/AdminLTE.css" rel="stylesheet" type="text/css" />
 
@@ -81,8 +82,9 @@
 <!-- DATA TABES SCRIPT -->
 <!-- <script src="${ctx}/js/plugins/datatables/jquery.dataTables.js" -->
 <!-- 	type="text/javascript"></script> -->
-	<script src="//cdn.datatables.net/1.10.2/js/jquery.dataTables.min.js"></script>
-<script src="${ctx}/js/plugins/datatables/dataTables.bootstrap.js" type="text/javascript"></script>
+<script src="//cdn.datatables.net/1.10.2/js/jquery.dataTables.min.js"></script>
+<script src="${ctx}/js/plugins/datatables/dataTables.bootstrap.js"
+	type="text/javascript"></script>
 
 <!-- AdminLTE App -->
 <!-- <script src="${ctx}/js/AdminLTE/app.js" type="text/javascript"></script> -->

@@ -5,7 +5,7 @@
 <html>
 <head>
 <meta charset="utf-8">
-<title>demo</title>
+<title>点金手联盟</title>
 <%@ include file="/common/jslibs.jsp" %>
 </head>
 
@@ -19,27 +19,18 @@
             <!-- Right side column. Contains the navbar and content of the page -->
             <aside class="right-side">
                 <!-- Content Header (Page header) -->
-                <section class="content-header">
-                    <h1>
-                        Dashboard
-                        <small>Control panel</small>
-                    </h1>
-                    <ol class="breadcrumb">
-                        <li><a href="#"><i class="fa fa-dashboard"></i> Home</a></li>
-                        <li class="active">Dashboard</li>
-                    </ol>
-                </section>
+                
 
                 <!-- Main content -->
-                <div class="chart" id="line-chart" style="height: 250px;"></div>
+                
                 <section class="content">
 
                     <!-- Small boxes (Stat box) -->
                     <!-- /.row -->
 
                     <!-- Main row -->
-                    <div class="row">
-
+                    <div class="row" style="vertical-align: middle;text-align: center;">
+						<img alt="" src="${ctx}/img/index_bg.png">
                     </div><!-- /.row (main row) -->
 
                 </section><!-- /.content -->
