@@ -27,12 +27,10 @@
 		<aside class="right-side">
 			<!-- Content Header (Page header) -->
 			<section class="content-header">
-				<h1>
-					广告主信息  <small>添加</small>
-				</h1>
+				<h1>修改密码</h1>
 				<ol class="breadcrumb">
 					<li><a href="#"><i class="fa fa-dashboard"></i> Home</a></li>
-					<li class="active">添加广告主信息</li>
+					<li class="active">修改密码</li>
 				</ol>
 			</section>
 
@@ -44,34 +42,38 @@
 					</div>
 					<!-- /.box-header -->
 					<!-- form start -->
-					<form role="form" action="${ctx}/adinfo/add.do">
+					<form role="form" action="${ctx}/user/pwdupdate.do">
 						<div class="box-body">
 							<div class="form-group">
-								<label for="adName">广告名</label> <input type="text"
-									class="form-control" id="adName" name="adName"
-									placeholder="请输入广告名" required >
-							</div>
-							<div class="form-group">
-								<label for="advertiser">广告商</label> <input type="text"
-									class="form-control" id="advertiser" name="advertiser"
-									placeholder="请输入广告商" required>
-							</div>
-							<div class="form-group">
-								<label for="unitPrice">广告单价</label> <input type="number" step="0.01"
-									class="form-control" id="unitPrice" name="unitPrice"
-									placeholder="请输入广告单价" required>
-							</div>
-							<div class="form-group">
-							<label for="unitPrice">广告类型</label>
-								<div class="radio">
-									<label> <input type="radio" name="adType" id="APP"
-										value="APP" style="margin-left: 0px" checked="checked">APP
-									</label>
+								<div class="control-group">
+									<label for="qdLogin">原密码</label>
+									<div class="controls">
+										<p class="help-block"></p>
+										<input type="password" class="form-control" id="oldPwd"
+											name="oldPwd" placeholder="请输入原密码"
+											data-validation-ajax-ajax="${ctx}/user/validator/pwd.do">
+									</div>
 								</div>
-								<div class="radio">
-									<label> <input type="radio" name="adType" id="APK"
-										value="APK"  style="margin-left: 0px" />APK
-									</label>
+							</div>
+							<div class="form-group">
+								<div class="control-group">
+									<label for="qdName">新密码</label>
+									<div class="controls">
+										<p class="help-block"></p>
+										<input type="password" class="form-control" id="newPwd"
+											name="newPwd" placeholder="请输入新密码" required>
+									</div>
+								</div>
+							</div>
+							<div class="form-group">
+								<div class="control-group">
+									<label for="bankName">确认新密码</label>
+									<div class="controls">
+										<p class="help-block"></p>
+										<input type="password" class="form-control" id="confirmPwd"
+											name="confirmPwd" data-validation-match-match="newPwd"
+											placeholder="请再次输入新密码" required>
+									</div>
 								</div>
 							</div>
 						</div>

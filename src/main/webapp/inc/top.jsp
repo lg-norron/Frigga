@@ -24,7 +24,14 @@
 					<!-- Tasks: style can be found in dropdown.less -->
 					
 					<!-- User Account: style can be found in dropdown.less -->
-					<li class=" user user-menu"><a href="${ctx}/user/logout.do"> <span>登出</span></a></li>
+					<c:if test="${user.role != 'super' }">
+					<li class=" user user-menu">
+					<a href="${ctx}/user/updatePwd.jsp"><span>修改密码</span></a>
+					</li>
+					</c:if>
+					<li class=" user user-menu">
+					<a href="${ctx}/user/logout.do"> <span>登出</span></a>
+					</li>
 				</ul>
 			</div>
 		</nav>

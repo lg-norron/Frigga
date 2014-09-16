@@ -43,7 +43,7 @@
 
 
 <!-- jQuery 2.0.2 -->
-<script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
+<script src="${ctx}/js/jquery-1.11.1.min.js"></script>
 <!-- jQuery UI 1.10.3 -->
 <script src="${ctx}/js/jquery-ui-1.10.3.min.js" type="text/javascript"></script>
 <!-- Bootstrap -->
@@ -85,7 +85,8 @@
 <script src="//cdn.datatables.net/1.10.2/js/jquery.dataTables.min.js"></script>
 <script src="${ctx}/js/plugins/datatables/dataTables.bootstrap.js"
 	type="text/javascript"></script>
-
+<script src="${ctx}/js/plugins/jqBootstrapValidation/jqBootstrapValidation.js"
+	type="text/javascript"></script>
 <!-- AdminLTE App -->
 <!-- <script src="${ctx}/js/AdminLTE/app.js" type="text/javascript"></script> -->
 

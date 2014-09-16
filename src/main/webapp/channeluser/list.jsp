@@ -64,12 +64,11 @@
 			<!-- Content Header (Page header) -->
 			<section class="content-header">
 				<h1>
-					Dashboard <small>Control panel</small>
+					渠道信息 <small>列表</small>
 				</h1>
 				<ol class="breadcrumb">
 					<li><a href="#"><i class="fa fa-dashboard"></i> Home</a></li>
-					<li><a href="#">Examples</a></li>
-					<li class="active">Blank page</li>
+					<li class="active">渠道信息列表</li>
 				</ol>
 			</section>
 

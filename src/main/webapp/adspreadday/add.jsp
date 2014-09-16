@@ -28,11 +28,11 @@
 			<!-- Content Header (Page header) -->
 			<section class="content-header">
 				<h1>
-					Dashboard <small>Control panel</small>
+					推广包日报表 <small>登记</small>
 				</h1>
 				<ol class="breadcrumb">
 					<li><a href="#"><i class="fa fa-dashboard"></i> Home</a></li>
-					<li class="active">Dashboard</li>
+					<li class="active">登记推广包日报表</li>
 				</ol>
 			</section>
 
@@ -70,7 +70,7 @@
 						<!-- /.box-body -->
 
 						<div class="box-footer">
-							<button type="submit" class="btn btn-primary">Submit</button>
+							<button type="submit" class="btn btn-primary">提交</button>
 						</div>
 					</form>
 				</div>

@@ -48,7 +48,7 @@
 																full) {
 															// 返回自定义内容
 															var download = " <a href='${ctx}"+ data+ "'>"
-																	+ "<button class='btn btn-default'>下载包</button>"
+																	+ "<button class='btn btn-primary'><i class='fa fa-download'></i>下载包</button>"
 																	+ "</a>&nbsp;";
 															var str = download;
 															return str;
@@ -107,12 +107,11 @@
 			<!-- Content Header (Page header) -->
 			<section class="content-header">
 				<h1>
-					Dashboard <small>Control panel</small>
+					推广包信息 <small>列表</small>
 				</h1>
 				<ol class="breadcrumb">
 					<li><a href="#"><i class="fa fa-dashboard"></i> Home</a></li>
-					<li><a href="#">Examples</a></li>
-					<li class="active">Blank page</li>
+					<li class="active">推广包信息</li>
 				</ol>
 			</section>
 

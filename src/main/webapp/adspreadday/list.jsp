@@ -66,12 +66,11 @@
 			<!-- Content Header (Page header) -->
 			<section class="content-header">
 				<h1>
-					${param.spreadId} <small>Control panel</small>
+					推广包日报表 <small>(ID：${param.spreadId})</small>
 				</h1>
 				<ol class="breadcrumb">
 					<li><a href="#"><i class="fa fa-dashboard"></i> Home</a></li>
-					<li><a href="#">Examples</a></li>
-					<li class="active">Blank page</li>
+					<li class="active">推广包日报表</li>
 				</ol>
 			</section>
 
