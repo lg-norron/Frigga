@@ -13,6 +13,7 @@ import java.util.List;
 
 import javax.annotation.Resource;
 
+import org.apache.commons.lang3.StringUtils;
 import org.springframework.stereotype.Service;
 
 import com.southwind.frigga.consts.AdSpreadConst;
@@ -68,10 +69,19 @@ public class AdSpreadDayService {
 		int length = adSpreadDaySearchParam.getLength();
 		long spreadId = adSpreadDaySearchParam.getSpreadId();
 		long qdid = adSpreadDaySearchParam.getQdId();
+		String minSpreadDate = adSpreadDaySearchParam.getMinSpreadDate();
+		String maxSpreadDate = adSpreadDaySearchParam.getMaxSpreadDate();
+		
 		AdSpreadDayExample example = new AdSpreadDayExample();
 		Criteria criteria = example.createCriteria();
 		if(spreadId!=0){
 			criteria.andSpreadIdEqualTo(spreadId);
+		}
+		if(StringUtils.isNotBlank(minSpreadDate)){
+			criteria.andSpreadDateGreaterThanOrEqualTo(minSpreadDate);
+		}
+		if(StringUtils.isNotBlank(maxSpreadDate)){
+			criteria.andSpreadDateLessThanOrEqualTo(maxSpreadDate);
 		}
 		example.setOrderByClause("spread_date desc");
 		List<AdSpreadDay> adSpreadDayList = adSpreadDayMapper.selectByExample(example,qdid,start,length);

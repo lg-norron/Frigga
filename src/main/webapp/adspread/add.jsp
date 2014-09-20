@@ -80,7 +80,12 @@
 									placeholder="请输入推广单价" required>
 							</div>
 							<div class="form-group">
-								<label for="uploadfile">File input</label> <input
+								<label for="packageName">推广包地址</label> <input type="text"
+									class="form-control" id="downloadUrl" name="downloadUrl"
+									placeholder="请输入推广包地址" >
+							</div>
+							<div class="form-group">
+								<label for="uploadfile">上传推广包</label> <input
 									type="file" id="uploadfile" name="uploadfile">
 							</div>
 						</div>

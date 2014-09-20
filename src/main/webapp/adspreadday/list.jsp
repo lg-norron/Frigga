@@ -9,48 +9,62 @@
 <%@ include file="/common/jslibs.jsp"%>
 <!-- page script -->
 <script type="text/javascript">
-	$(document)
-			.ready(
-					function() {
-						$("#example2")
-								.dataTable(
-										{
-											"processing" : true,
-											"serverSide" : true,
-											"ajax" : {
-												"url" : "${ctx}/adspreadday/list.do?spreadId=${param.spreadId}",
-											},
-											"columns" : [ {
-												"data" : "spreadDate"
-											}, {
-												"data" : "adId"
-											}, {
-												"data" : "qdId"
-											}, {
-												"data" : "packageName"
-											}, {
-												"data" : "activeRevenue"
-											}, {
-												"data" : "activeExpenses"
-											}, {
-												"data" : "rebateSinceFlag"
+
+$(document)
+		.ready(
+				function() {
+					var table = $("#example2")
+							.dataTable(
+									{
+										"processing" : true,
+										"searching":false,
+										"serverSide" : true,
+										"ajax" : {
+											"url" : "${ctx}/adspreadday/list.do?spreadId=${param.spreadId}&minSpreadDate=${param.minSpreadDate}&maxSpreadDate=${param.maxSpreadDate}",
+										},
+										"columns" : [ {
+											"data" : "spreadDate"
+										}, {
+											"data" : "adId"
+										}, {
+											"data" : "qdId"
+										}, {
+											"data" : "packageName"
+										}, {
+											"data" : "activeRevenue"
+										}, {
+											"data" : "activeExpenses"
+										}, {
+											"data" : "rebateSinceFlag"
+										} ],
+										"columnDefs" : [ {
+											"targets" : [ 7 ], // 目标列位置，下标从0开始
+											"data" : "id", // 数据列名
+											"render" : function(data, type,
+													full) {
+												// 返回自定义内容
+												var edit = "<a href='${ctx}/adspreadday/recordUI.do?id="
+														+ data
+														+ "&spreadId=${param.spreadId}'>"
+														+ "<button class='btn btn-warning'>编辑</button>"
+														+ "</a>&nbsp;";
+												var del = " <a href='${ctx}/adspreadday/delete.do?id="
+														+ data
+														+ "&spreadId=${param.spreadId}'>"
+														+ "<button class='btn btn-danger'>删除</button>"
+														+ "</a>&nbsp;";
+												var str = edit + del;
+												return str;
 											}
-											],
-											"columnDefs" : [ {
-												"targets" : [ 7 ], // 目标列位置，下标从0开始
-												"data" : "id", // 数据列名
-												"render" : function(data, type,
-														full) {
-													// 返回自定义内容
-													var edit = "<a href='${ctx}/adspreadday/recordUI.do?id="+ data + "&spreadId=${param.spreadId}'>"+"<button class='btn btn-warning'>编辑</button>"+"</a>&nbsp;";
-													var del = " <a href='${ctx}/adspreadday/delete.do?id="+ data+ "&spreadId=${param.spreadId}'>"+"<button class='btn btn-danger'>删除</button>"+"</a>&nbsp;";													
-													var str = edit + del ;
-													return str;
-												}
-											}
-											]
-										});
-					});
+										} ]
+									});
+
+				});
+function search(){
+	var minSpreadDate = $("#minSpreadDate").val();
+	var maxSpreadDate = $("#maxSpreadDate").val();
+	location.href = "${ctx}/adspreadday/list.jsp?spreadId=${param.spreadId}&minSpreadDate="+minSpreadDate+"&maxSpreadDate="+maxSpreadDate;
+}
 </script>
 </head>
 
@@ -66,7 +80,10 @@
 			<!-- Content Header (Page header) -->
 			<section class="content-header">
 				<h1>
-					推广包日报表 <small>(ID：${param.spreadId})</small>
+					推广包日报表
+					<c:if test="${user.role == 'super' }">
+						<small>(ID：${param.spreadId})</small>
+					</c:if>
 				</h1>
 				<ol class="breadcrumb">
 					<li><a href="#"><i class="fa fa-dashboard"></i> Home</a></li>
@@ -86,7 +103,8 @@
 						<div class="box">
 							<div class="box-header">
 								<div>
-									<a href="${ctx}/adspreadday/recordUI.do?spreadId=${param.spreadId}"><button
+									<a
+										href="${ctx}/adspreadday/recordUI.do?spreadId=${param.spreadId}"><button
 											class="btn btn-success btn-lg"
 											style="margin-top: 10px;margin-left: 10px">添加</button></a>
 								</div>
@@ -94,21 +112,29 @@
 							</div>
 							<!-- /.box-header -->
 							<div class="box-body table-responsive">
-								<table id="example2" class="table table-bordered table-hover">
-									<thead>
+								<table border="0" cellspacing="5" cellpadding="5">
+									<tbody>
 										<tr>
-											<th>推广日期</th>
-											<th>广告ID</th>
-											<th>渠道ID</th>
-											<th>包名</th>
-											<th>收入激活量</th>
-											<th>支出激活量</th>
-											<th>起量参考标识</th>
-											<th>操作</th>
+											<td>推广日期:</td>
+											<td><input type="text" id="minSpreadDate" name="minSpreadDate" value="${param.minSpreadDate}" onFocus="WdatePicker({maxDate:'#F{$dp.$D(\'maxSpreadDate\')||\'2020-10-01\'}'})"/> 至 <input type="text" id="maxSpreadDate" name="maxSpreadDate" value="${param.maxSpreadDate}" onFocus="WdatePicker({minDate:'#F{$dp.$D(\'minSpreadDate\')}',maxDate:'2020-10-01'})"/></td>
+											<td><button onclick="search()">查询</button></td>
 										</tr>
-									</thead>
-									<tbody></tbody>
-								</table>
+									</tbody>
+									<table id="example2" class="table table-bordered table-hover">
+										<thead>
+											<tr>
+												<th>推广日期</th>
+												<th>广告ID</th>
+												<th>渠道ID</th>
+												<th>包名</th>
+												<th>收入激活量</th>
+												<th>支出激活量</th>
+												<th>起量参考标识</th>
+												<th>操作</th>
+											</tr>
+										</thead>
+										<tbody></tbody>
+									</table>
 							</div>
 							<!-- /.box-body -->
 						</div>

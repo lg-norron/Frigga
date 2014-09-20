@@ -43,7 +43,8 @@
 					</div>
 					<!-- /.box-header -->
 					<!-- form start -->
-					<form role="form" action="${ctx}/adspread/add.do" method="post" enctype="multipart/form-data">
+					<form role="form" action="${ctx}/adspread/update.do" method="post" enctype="multipart/form-data">
+					<input type="hidden" id="id" name="id" value="${adSpread.id}">
 						<div class="box-body">
 							<div class="form-group">
 								<label for="qdLogin">包名</label> <input type="text"
@@ -77,9 +78,18 @@
 							<div class="form-group">
 								<label for="spreadPrice">推广单价</label> <input type="number"
 									class="form-control" id="spreadPrice" name="spreadPrice" step="0.01"
-									value="${adSpread.spreadPrice} required>
+									value="${adSpread.spreadPrice}" required>
 							</div>
 						</div>
+						<div class="form-group">
+								<label for="packageName">推广包地址</label> <input type="text"
+									class="form-control" id="downloadUrl" name="downloadUrl"
+									value="${adSpread.downloadUrl}" >
+							</div>
+							<div class="form-group">
+								<label for="uploadfile">上传推广包</label> <input
+									type="file" id="uploadfile" name="uploadfile">
+							</div>
 						<!-- /.box-body -->
 
 						<div class="box-footer">

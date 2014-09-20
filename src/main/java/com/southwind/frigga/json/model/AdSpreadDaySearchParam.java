@@ -25,6 +25,8 @@ public class AdSpreadDaySearchParam extends SearchParam {
 
 	private long spreadId;
 	private long qdId;
+	private String minSpreadDate;
+	private String maxSpreadDate;
 
 	/**
 	 * spreadId
@@ -62,6 +64,44 @@ public class AdSpreadDaySearchParam extends SearchParam {
 	
 	public void setQdId(long qdId) {
 		this.qdId = qdId;
+	}
+
+	/**
+	 * minSpreadDate
+	 *
+	 * @return  the minSpreadDate
+	 * @since   1.0.0
+	 */
+	
+	public String getMinSpreadDate() {
+		return minSpreadDate;
+	}
+
+	/**
+	 * @param minSpreadDate the minSpreadDate to set
+	 */
+	
+	public void setMinSpreadDate(String minSpreadDate) {
+		this.minSpreadDate = minSpreadDate;
+	}
+
+	/**
+	 * maxSpreadDate
+	 *
+	 * @return  the maxSpreadDate
+	 * @since   1.0.0
+	 */
+	
+	public String getMaxSpreadDate() {
+		return maxSpreadDate;
+	}
+
+	/**
+	 * @param maxSpreadDate the maxSpreadDate to set
+	 */
+	
+	public void setMaxSpreadDate(String maxSpreadDate) {
+		this.maxSpreadDate = maxSpreadDate;
 	}
 	
 	

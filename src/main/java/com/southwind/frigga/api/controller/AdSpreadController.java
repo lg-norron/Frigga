@@ -15,6 +15,7 @@ import java.util.List;
 import javax.annotation.Resource;
 import javax.servlet.http.HttpServletRequest;
 
+import org.apache.commons.lang3.StringUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -48,7 +49,8 @@ import com.southwind.frigga.json.model.SearchParam;
 @RequestMapping("/adspread")
 public class AdSpreadController {
 
-	private static final Logger logger = LoggerFactory.getLogger(AdSpreadController.class);
+	private static final Logger logger = LoggerFactory
+			.getLogger(AdSpreadController.class);
 
 	private String pageList = "redirect:/adspread/list.jsp";
 	private String pageAdd = "adspread/add";
@@ -91,26 +93,33 @@ public class AdSpreadController {
 	public String adSpreadAdd(AdSpread adSpread,
 			@RequestParam("uploadfile") MultipartFile file) {
 		try {
-			String uploadfileFolder = PropertiesUtil.getValue("uploadfile_folder");
-			/** 构建文件保存的目录* */
-			String uploadPathDir = uploadfileFolder + DateUtil.getCurrentDate("yyyy/MM/dd/HH/mm/ss/");
-			/** 得到文件保存目录的真实路径* */
-			String uploadRealPathDir = request.getSession().getServletContext().getRealPath(uploadPathDir);
-			/** 根据真实路径创建目录* */
-			File uploadSaveFile = new File(uploadRealPathDir);
-			if (!uploadSaveFile.exists()){
-				uploadSaveFile.mkdirs();
+
+			String filename = file.getOriginalFilename();
+			if (StringUtils.isNotBlank(filename)) {
+				String uploadfileFolder = PropertiesUtil
+						.getValue("uploadfile_folder");
+				/** 构建文件保存的目录* */
+				String uploadPathDir = uploadfileFolder
+						+ DateUtil.getCurrentDate("yyyy/MM/dd/HH/mm/ss/");
+				/** 得到文件保存目录的真实路径* */
+				String uploadRealPathDir = request.getSession()
+						.getServletContext().getRealPath(uploadPathDir);
+				/** 根据真实路径创建目录* */
+				File uploadSaveFile = new File(uploadRealPathDir);
+				if (!uploadSaveFile.exists()) {
+					uploadSaveFile.mkdirs();
+				}
+				FileOutputStream fileOS = new FileOutputStream(
+						uploadRealPathDir + "/" + filename);
+				fileOS.write(file.getBytes());
+				fileOS.close();
+				logger.info("推广包保存路径为：{}", uploadRealPathDir + filename);
+
+				adSpread.setDownloadUrl(uploadPathDir + filename);
 			}
-			String filename =  file.getOriginalFilename();
-			FileOutputStream fileOS = new FileOutputStream(uploadRealPathDir+"/"+filename);
-			fileOS.write(file.getBytes());
-			fileOS.close();
-			logger.info("推广包保存路径为：{}",uploadRealPathDir+filename);
-			
-			adSpread.setDownloadUrl(uploadPathDir+filename);
 			adSpread.setRebateSinceFlag(AdSpreadConst.REBATE_SINCE_FLAG_UNFINISHED);
 			adSpreadService.adSpreadAdd(adSpread);
-			
+
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
@@ -119,19 +128,52 @@ public class AdSpreadController {
 
 	@RequestMapping(value = "/updateUI")
 	public ModelAndView updateUI(long id) {
-
+		List<AdInfo> adInfoList = adInfoService.adInfoList(new SearchParam());
+		List<ChannelUser> channelUserList = channelUserService
+				.channelUserList(new SearchParam());
 		AdSpread adSpread = adSpreadService.getById(id);
 
 		ModelAndView mav = new ModelAndView();
 		mav.setViewName(pageUpdate);
+		mav.addObject("adInfoList", adInfoList);
+		mav.addObject("channelUserList", channelUserList);
 		mav.addObject(adSpread);
 
 		return mav;
 	}
 
 	@RequestMapping(value = "/update")
-	public String update(AdSpread AdSpread) {
-		adSpreadService.adSpreadUpdate(AdSpread);
+	public String update(AdSpread adSpread,
+			@RequestParam("uploadfile") MultipartFile file) {
+		try {
+
+			String filename = file.getOriginalFilename();
+			if (StringUtils.isNotBlank(filename)) {
+				String uploadfileFolder = PropertiesUtil
+						.getValue("uploadfile_folder");
+				/** 构建文件保存的目录* */
+				String uploadPathDir = uploadfileFolder
+						+ DateUtil.getCurrentDate("yyyy/MM/dd/HH/mm/ss/");
+				/** 得到文件保存目录的真实路径* */
+				String uploadRealPathDir = request.getSession()
+						.getServletContext().getRealPath(uploadPathDir);
+				/** 根据真实路径创建目录* */
+				File uploadSaveFile = new File(uploadRealPathDir);
+				if (!uploadSaveFile.exists()) {
+					uploadSaveFile.mkdirs();
+				}
+				FileOutputStream fileOS = new FileOutputStream(
+						uploadRealPathDir + "/" + filename);
+				fileOS.write(file.getBytes());
+				fileOS.close();
+				logger.info("推广包保存路径为：{}", uploadRealPathDir + filename);
+
+				adSpread.setDownloadUrl(uploadPathDir + filename);
+			}
+			adSpreadService.adSpreadUpdate(adSpread);
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
 		return pageList;
 	}
 

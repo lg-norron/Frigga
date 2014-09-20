@@ -47,10 +47,17 @@
 																data, type,
 																full) {
 															// 返回自定义内容
-															var download = " <a href='${ctx}"+ data+ "'>"
-																	+ "<button class='btn btn-primary'><i class='fa fa-download'></i>下载包</button>"
-																	+ "</a>&nbsp;";
-															var str = download;
+															var str = "";
+															if(data.indexOf("http://")>-1){
+																str = " <a href='"+ data+ "'>"
+																+ "<button class='btn btn-primary'><i class='fa fa-download'></i>下载包</button>"
+																+ "</a>&nbsp;";
+															}else{
+																str = " <a href='${ctx}/"+ data+ "'>"
+																+ "<button class='btn btn-primary'><i class='fa fa-download'></i>下载包</button>"
+																+ "</a>&nbsp;";
+															}
+															
 															return str;
 														}
 													},

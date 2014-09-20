@@ -87,6 +87,7 @@
 	type="text/javascript"></script>
 <script src="${ctx}/js/plugins/jqBootstrapValidation/jqBootstrapValidation.js"
 	type="text/javascript"></script>
+ <script language="javascript" type="text/javascript" src="${ctx}/js/plugins/My97DatePicker/WdatePicker.js"></script>
 <!-- AdminLTE App -->
 <!-- <script src="${ctx}/js/AdminLTE/app.js" type="text/javascript"></script> -->
 
