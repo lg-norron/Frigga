@@ -287,11 +287,11 @@
 		</plugins>
 	</build>
 	<!--这是把项目上传到私服命令:mvn deploy -->
-	<distributionManagement>
-		<repository>
-			<id>releases</id>
-			<name>Internal Releases</name>
-			<url>http://192.168.0.100:8081/nexus/content/repositories/releases/</url>
-		</repository>
-	</distributionManagement>
+<!-- 	<distributionManagement> -->
+<!-- 		<repository> -->
+<!-- 			<id>releases</id> -->
+<!-- 			<name>Internal Releases</name> -->
+<!-- 			<url>http://192.168.0.100:8081/nexus/content/repositories/releases/</url> -->
+<!-- 		</repository> -->
+<!-- 	</distributionManagement> -->
 </project>
