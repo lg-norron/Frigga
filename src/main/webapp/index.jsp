@@ -5,7 +5,7 @@
 <html>
 <head>
 <meta charset="utf-8">
-<title>点金手联盟</title>
+<title>渠道推广统计后台</title>
 <%@ include file="/common/jslibs.jsp" %>
 </head>
 

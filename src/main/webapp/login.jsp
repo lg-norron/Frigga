@@ -5,7 +5,7 @@
 <html class="bg-black">
 <head>
 <meta charset="utf-8">
-<title>登录</title>
+<title>渠道推广统计后台--登录</title>
 <%@ include file="/common/jslibs.jsp" %>
 </head>
     <body class="bg-black">

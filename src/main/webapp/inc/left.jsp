@@ -33,7 +33,7 @@
 						class="fa fa-table"></i> <span>推广包信息</span>
 				</a></li>
 				</c:if>
-				<li><a href="${ctx}/adspreadday/list.jsp?spreadId=0"> <i
+				<li><a href="${ctx}/adspreadday/qdlist.jsp?spreadId=0"> <i
 						class="fa fa-table"></i> <span>推广统计</span>
 				</a></li>
 			</ul>

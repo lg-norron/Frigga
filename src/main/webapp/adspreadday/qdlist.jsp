@@ -30,33 +30,9 @@ $(document)
 											"data" : "qdId"
 										}, {
 											"data" : "packageName"
-										},{
-											"data" : "activeRevenue"
 										}, {
 											"data" : "activeExpenses"
-										}, {
-											"data" : "rebateSinceFlag"
-										} ],
-										"columnDefs" : [ {
-											"targets" : [ 7 ], // 目标列位置，下标从0开始
-											"data" : "id", // 数据列名
-											"render" : function(data, type,
-													full) {
-												// 返回自定义内容
-												var edit = "<a href='${ctx}/adspreadday/recordUI.do?id="
-														+ data
-														+ "&spreadId=${param.spreadId}'>"
-														+ "<button class='btn btn-warning'>编辑</button>"
-														+ "</a>&nbsp;";
-												var del = " <a href='${ctx}/adspreadday/delete.do?id="
-														+ data
-														+ "&spreadId=${param.spreadId}'>"
-														+ "<button class='btn btn-danger'>删除</button>"
-														+ "</a>&nbsp;";
-												var str = edit + del;
-												return str;
-											}
-										} ]
+										}]
 									});
 
 				});
@@ -81,9 +57,7 @@ function search(){
 			<section class="content-header">
 				<h1>
 					推广包日报表
-					<c:if test="${user.role == 'super' }">
-						<small>(ID：${param.spreadId})</small>
-					</c:if>
+					
 				</h1>
 				<ol class="breadcrumb">
 					<li><a href="#"><i class="fa fa-dashboard"></i> Home</a></li>
@@ -127,10 +101,7 @@ function search(){
 												<th>广告ID</th>
 												<th>渠道ID</th>
 												<th>包名</th>
-												<th>收入激活量</th>
-												<th>支出激活量</th>
-												<th>起量参考标识</th>
-												<th>操作</th>
+												<th>激活量</th>
 												
 											</tr>
 										</thead>
